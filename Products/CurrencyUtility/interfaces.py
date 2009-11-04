@@ -61,6 +61,9 @@ class ICurrencyAware(interface.Interface):
 
     value = interface.Attribute(
         """float: the value in the base-currency""")
+        
+    def getCurrencySymbol():
+        """returns the currency symbol"""
 
     def getValue(currency=None):
         """returns the value in the appropriate currency"""

@@ -15,15 +15,18 @@ class CurrencyAware(object):
 
     def __init__(self, value, currency=None):
         """value is a price and IT's currency"""
+        self.utility = getUtility(ICurrencyUtility)
         if currency is not None:
-            utility = getUtility(ICurrencyUtility)
-            value = float(value)/utility.getCurrencyFactor(currency)
+            value = float(value)/self.utility.getCurrencyFactor(currency)
         self.value = value
+        
+    def getCurrencySymbol(self):
+        """returns the currency symbol"""
+        return self.utility.getActiveCurrency()
 
     def getValue(self, currency=None):
         """returns the value in the appropriate currency"""
-        utility = getUtility(ICurrencyUtility)
-        factor = utility.getCurrencyFactor(currency)
+        factor = self.utility.getCurrencyFactor(currency)
         return float(self.value) * factor
 
     def getRoundedValue(self, currency=None):
@@ -33,8 +36,7 @@ class CurrencyAware(object):
 
     def toString(self, currency=None):
         """returns the value in the appropriate currency rounded to 0.05 including the symbol"""
-        utility = getUtility(ICurrencyUtility)
-        return "%s %0.2f" % (utility.getCurrencySymbol(currency), self.getRoundedValue(currency))
+        return "%s %0.2f" % (self.utility.getCurrencySymbol(currency), self.getRoundedValue(currency))
     
     def valueToString(self, currency=None):
         """returns the value in the appropriate currency rounded to 0.05"""
@@ -42,5 +44,4 @@ class CurrencyAware(object):
     
     def safeToString(self, currency=None):
         """returns the value in the appropriate currency rounded to 0.05 including the currency-short-name"""
-        utility = getUtility(ICurrencyUtility)
-        return "%s %0.2f" % (utility.getActiveCurrency(currency), self.getRoundedValue(currency))
+        return "%s %0.2f" % (self.utility.getActiveCurrency(currency), self.getRoundedValue(currency))
