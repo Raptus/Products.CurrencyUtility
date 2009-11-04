@@ -1,0 +1,24 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      i18n:domain="CurrencyUtility">
+  <div metal:define-macro="macros">
+    <div metal:define-macro="after_primary">
+
+      <div class="field"
+           tal:define="error errors/currency | nothing;"
+           tal:attributes="class python:test(error, 'field error', 'field')">
+
+          <label for="currency" i18n:translate="label_currency">Currency</label>
+
+          <div tal:content="error">Validation error output</div>
+
+          <tal:field replace="structure here/@@currency_selector" />
+
+      </div>
+      
+    </div>
+  </div>
+</html>

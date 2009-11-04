@@ -1,0 +1,41 @@
+CURRENCY_NAME = 1
+CURRENCY_SYMBOL = 2
+CURRENCY_ISOCODE = 0
+
+currency_list = {
+      'eur' : (978, u'Euro', u'\u20ac'),
+      'usd' : (840, u'US Dollar', u'$'),
+      'jpy' : (392, u'Japanese Yen', u'\xa5'),
+      'bgn' : (975, u'Bulgarian Lev', ''),
+      'czk' : (203, u'Czech Koruna', ''),
+      'dkk' : (208, u'Danish Krone', u'kr'),
+      'eek' : (233, u'Estonia Kroon', ''),
+      'gbp' : (826, u'Pound Sterling', u'\xa3'),
+      'huf' : (348, u'Hungarian Forint', ''),
+      'ltl' : (440, u'Lithuanian Litas', ''),
+      'lvl' : (428, u'Latvian Lats', ''),
+      'pln' : (985, u'Polish Z\u0142oty', ''),
+      'ron' : (642, u'New Romanian Leu', ''),
+      'sek' : (752, u'Swedish Krona', u'kr'),
+      'skk' : (703, u'Slovak Koruna', ''),
+      'chf' : (756, u'Swiss Franc', ''),
+      'isk' : (352, u'Iceland Krona', ''),
+      'nok' : (578, u'Norwegian Krone', ''),
+      'hrk' : (191, u'Croatian Kuna', ''),
+      'rub' : (643, u'Russian Rouble', u'$'),
+      'try' : (792, u'New Turkish lira', u'\u20a4'),
+      'aud' : (36, u'Australian Dollar', u'$'),
+      'brl' : (986, u'Brazilian Real', u'R$'),
+      'cad' : (124, u'Canadian Dollar', u'$'),
+      'cny' : (156, u'Chinese Yuan Renminbi', u'\u5713'),
+      'hkd' : (344, u'Hong Kong Dollar', u'$'),
+      'idr' : (360, u'Indonesian Rupiah', ''),
+      'krw' : (410, u'South Korean Won', u'\u20a9'),
+      'mxn' : (484, u'Mexican Peso', u'$'),
+      'myr' : (458, u'Malaysian Ringgit', ''),
+      'nzd' : (554, u'New Zealand Dollar', u'$'),
+      'php' : (608, u'Phillipine Peso', u'\u20b1'),
+      'sgd' : (702, u'Singapur Dollar', u'$'),
+      'thb' : (764, u'Thai Baht', u'\u0e3f'),
+      'zar' : (710, u'South African Rand', u'R')
+}

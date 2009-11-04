@@ -1,0 +1,6 @@
+<select name="currency" id="currency" size="1" tal:condition="view/getCurrencies"
+        i18n:domain="CurrencyUtility">
+  <option tal:repeat="currency view/getCurrencies" metal:define-macro="options"
+          tal:content="currency/title" tal:attributes="value currency/id;
+                                                       selected python:currency['selected'] and 'selected' or ''">Title</option>
+</select>

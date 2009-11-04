@@ -1,0 +1,34 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:cmf="http://namespaces.zope.org/cmf"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    i18n_domain="CurrencyUtility">
+
+  <include package=".browser" />
+
+  <genericsetup:registerProfile
+      name="default"
+      title="CurrencyUtility"
+      directory="profiles/default"
+      description="Provides CurrencyUtility"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+      
+  <cmf:registerDirectory
+      name="CurrencyUtility"/>
+
+  <utility factory=".utility.Currency" />
+
+  <utility
+      component=".utility.factorRegistry"
+      provides=".interfaces.ICurrencyFactorRegistry" />
+
+  <utility
+      name="currency_cron"
+      factory=".cron.CurrencyCron"
+      provides="Products.CronUtility.interfaces.ICron" />
+
+  <utility component=".currencydomain"
+           name="CurrencyUtility" />
+
+</configure>

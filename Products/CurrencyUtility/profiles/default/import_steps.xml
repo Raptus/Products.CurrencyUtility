@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<import-steps>
+  <import-step id="currencyutility" version="20080401"
+               handler="Products.CurrencyUtility.setuphandlers.setupCurrencyUtility"
+               title="CurrencyUtility configuration">
+    Setup CurrencyUtility
+  </import-step>
+</import-steps>

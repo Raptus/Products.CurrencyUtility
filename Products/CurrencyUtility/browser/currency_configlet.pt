@@ -1,0 +1,164 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="here/prefs_main_template/macros/master"
+      i18n:domain="CurrencyUtility">
+
+<body>
+
+  <div metal:fill-slot="prefs_configlet_main">
+
+        <h1 class="documentFirstHeading" i18n:translate="">
+            Currency configuration
+        </h1>
+
+        <a href=""
+           class="link-parent"
+           tal:attributes="href string: $portal_url/plone_control_panel"
+           i18n:domain="plone"
+           i18n:translate="label_up_to_plone_setup">
+            Up to Site Setup
+        </a>
+
+        <form action="."
+              metal:define-macro="master"
+              tal:attributes="action request/URL;"
+              method="post"
+              class="edit-form enableFormTabbing enableUnloadProtection"
+              tal:define="errors view/errors">
+
+            <fieldset id="fieldset-base">
+                <legend id="fieldsetlegend-base" i18n:translate="">Base</legend>
+                
+                <div class="field"
+                     tal:attributes="class python:'field'+(errors.has_key('default') and ' error' or '')">
+
+                    <label i18n:translate=""
+                           for="default">
+                        Default currency
+                    </label>
+
+                    <span class="fieldRequired"
+                          title="Required"
+                          i18n:domain="plone"
+                          i18n:attributes="title title_required;"
+                          i18n:translate="label_required">
+                        (Required)
+                    </span>
+
+                    <div tal:condition="python:errors.has_key('default')"
+                         tal:content="errors/title|nothing">
+                        The Error
+                    </div>
+
+                    <div class="widget">
+                        <select id="default" name="default" size="1">
+                          <tal:currency repeat="currency view/getCurrencies">
+                          <option value="eur" tal:define="selected python:currency['id'] == view.values['default'] or currency['id'] == request.get('default')"
+                                              tal:attributes="value currency/id;
+                                                              selected python:selected and 'selected' or ''" tal:content="currency/name">Euro</option>
+                          </tal:currency>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="field"
+                     tal:attributes="class python:'field'+(errors.has_key('active') and ' error' or '')">
+
+                    <label i18n:translate=""
+                           for="active:list">
+                        Active currencies
+                    </label>
+
+                    <span class="fieldRequired"
+                          title="Required"
+                          i18n:domain="plone"
+                          i18n:attributes="title title_required;"
+                          i18n:translate="label_required">
+                        (Required)
+                    </span>
+
+                    <div tal:condition="python:errors.has_key('active')"
+                         tal:content="errors/title|nothing">
+                        The Error
+                    </div>
+
+                    <div class="widget">
+                        <select id="active:list" name="active:list" size="6" multiple="multiple">
+                          <tal:currency repeat="currency view/getCurrencies">
+                          <option value="eur" tal:define="selected python:currency['id'] in view.values['active'] or currency['id'] in request.get('active', ())"
+                                              tal:attributes="value currency/id;
+                                                              selected python:selected and 'selected' or ''" tal:content="currency/name">Euro</option>
+                          </tal:currency>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="field"
+                     tal:attributes="class python:'field'+(errors.has_key('autoupdate') and ' error' or '')">
+
+                    <label i18n:translate=""
+                           for="autoupdate">
+                        Do Autoupdates
+                    </label>
+
+                    <div tal:condition="python:errors.has_key('autoupdate')"
+                         tal:content="errors/title|nothing">
+                        The Error
+                    </div>
+
+                    <div class="widget"
+                         tal:define="value view/values/autoupdate|request/autoupdate">
+                        <input id="test" name="autoupdate:boolean" type="checkbox"
+                               tal:attributes="checked python: value and 'checked' or ''">
+                    </div>
+                </div>
+                
+            </fieldset>
+
+            <fieldset id="fieldset-factors">
+                <legend id="fieldsetlegend-factors" i18n:translate="">Factors</legend>
+                
+                <div class="field"
+                     tal:repeat="currency view/getActiveCurrencies"
+                     tal:attributes="class python:'field'+(errors.has_key(currency['id']) and ' error' or '')">
+
+                    <label for="eur"
+                           tal:attributes="for string:${currency/id}:float:ignore_empty"
+                           tal:content="currency/name">
+                        Euro
+                    </label>
+
+                    <div tal:condition="python:errors.has_key(currency['id'])"
+                         tal:content="errors/title|nothing">
+                        The Error
+                    </div>
+
+                    <div class="widget">
+                        <input id="eur" name="eur" value="" type="text"
+                               tal:attributes="value python:view.values[currency['id']] or request.get(currency['id']);
+                                               name string:${currency/id}:float:ignore_empty; id string:${currency/id}:float:ignore_empty">
+                    </div>
+                </div>
+                
+            </fieldset>
+
+            <div id="actionsView" class="formControls">
+                <span class="actionButtons">
+                    <input name="currency_save" value="Save" class="context" type="submit"
+                           i18n:domain="plone"
+                           i18n:attributes="value">
+                    <input name="currency_update" value="update factors" class="context" type="submit"
+                           i18n:attributes="value">
+                </span>
+            </div>
+
+        </form>
+
+  </div>
+
+</body>
+</html>
+

@@ -1,0 +1,25 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="plone">
+
+    <browser:page
+        for="*"
+        name="currency_selector"
+        class=".currency_selector.CurrencySelectorView"
+        permission="zope2.View"
+        />
+
+    <browser:resource
+        name="currency_icon.gif"
+        image="currency_icon.gif"
+        />
+
+    <browser:page
+        for="Products.CMFCore.interfaces.ISiteRoot"
+        name="currency_configlet"
+        class=".currency_configlet.CurrencyConfigletView"
+        permission="cmf.ManagePortal"
+        />
+
+</configure>
