@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '0.1'
+version = '0.2-SNAPSHOT'
 
 setup(name='Products.CurrencyUtility',
       version=version,
@@ -16,7 +16,7 @@ setup(name='Products.CurrencyUtility',
       keywords='',
       author='Raptus AG',
       author_email='skaeser@raptus.com',
-      url='http://raptus.com',
+      url='https://svn.plone.org/svn/collective/Products.CurrencyUtility',
       license='GPL',
       packages=find_packages(exclude=['ez_setup']),
       namespace_packages=['Products'],
