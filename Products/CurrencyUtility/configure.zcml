@@ -28,7 +28,7 @@
       factory=".cron.CurrencyCron"
       provides="Products.CronUtility.interfaces.ICron" />
 
-  <utility component=".currencydomain"
-           name="CurrencyUtility" />
+  <!--utility component=".currencydomain"
+           name="CurrencyUtility" /-->
 
 </configure>
