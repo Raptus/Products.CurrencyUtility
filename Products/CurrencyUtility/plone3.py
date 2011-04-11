@@ -1,0 +1,2 @@
+from Products.PlacelessTranslationService.utility import PTSTranslationDomain
+currencydomain = PTSTranslationDomain('CurrencyUtility')

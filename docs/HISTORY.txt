@@ -1,7 +1,12 @@
 Changelog
 =========
 
-0.1 - Unreleased
+1.0a1 (2011-04-11)
+------------------
+
+* Registering PTSTranslationDomain only for Plone 3 and lower
+
+0.1 (2009-11-04)
 ----------------
 
 * Initial release
