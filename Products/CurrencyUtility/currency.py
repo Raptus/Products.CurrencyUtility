@@ -29,10 +29,11 @@ class CurrencyAware(object):
         factor = self.utility.getCurrencyFactor(currency)
         return float(self.value) * factor
 
-    def getRoundedValue(self, currency=None):
+    def getRoundedValue(self, currency=None, rounding=0.05):
         """returns the value in the appropriate currency rounded to 0.05"""
         value = self.getValue(currency)
-        return float(int(math.ceil(value*20)))/20
+        factor = 1.0 / rounding
+        return float(int(math.ceil(value*factor)))/factor
 
     def toString(self, currency=None):
         """returns the value in the appropriate currency rounded to 0.05 including the symbol"""
