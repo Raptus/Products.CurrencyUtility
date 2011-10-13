@@ -1,6 +1,11 @@
 Changelog
 =========
 
+unreleased
+----------
+
+* rounding is no longer fixed to 5 cents [huub_bouma]
+
 1.0a1 (2011-04-11)
 ------------------
 
